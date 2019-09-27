@@ -5,7 +5,7 @@
       <div class="bg-white rounded">
         <div v-for="(item, index) in history" v-bind:key="index" class="list-item flex p-2">
           Moved post {{ item.postId }} from index {{ item.indexFrom }} to index {{ item.indexTo }}
-          <button class="bg-green-300 hover:bg-green-400 text-blue-900 font-medium text-xs ml-auto py-1 px-2 rounded" @click="undo(index)">Time travel</button>
+          <button class="hover:bg-green-400 text-blue-900 font-medium text-xs ml-auto py-1 px-2 rounded" @click="undo(index)">Time travel</button>
         </div>
       </div>
     </div>
@@ -40,6 +40,7 @@ export default {
   border-bottom: none;
 }
 button {
-  transition: all 400ms
+  background: #00ff86;
+  transition: all 400ms;
 }
 </style>
