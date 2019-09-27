@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Posts msg="Welcome to Your Vue.js App"/>
+    <Posts />
   </div>
 </template>
 
@@ -8,9 +8,11 @@
 import { mapState } from 'vuex';
 import store from './store';
 import posts from './store/modules/posts';
+import history from './store/modules/history';
 import Posts from './components/Posts.vue'
 
 if (!store.state.posts) store.registerModule('posts', posts);
+if (!store.state.history) store.registerModule('history', history);
 
 export default {
   name: 'app',
@@ -19,7 +21,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'posts'
+      'posts',
+      'history'
     ])
   }
 }

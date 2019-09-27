@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import { MOVE_UP, MOVE_DOWN, FETCH_POSTS } from '../types';
-
-const state = [];
+import state from '../state';
 
 export const getters = {
-  posts: state => state,
+  posts: state => state.posts,
 };
 
 export const actions = {
@@ -22,22 +21,32 @@ export const actions = {
   },
 };
 
+const move = (state, index, movingUp) => {
+  const indexTo = movingUp ? index - 1 : index + 1;
+  const postId = state.posts[index].id;
+  state.history.unshift({
+    posts: [...state.posts],
+    indexFrom: index,
+    postId,
+    indexTo,
+  });
+  state.posts.splice(indexTo, 0, state.posts.splice(index, 1)[0]);
+}
+
 export const mutations = {
   [MOVE_UP](state, index) {
-    const indexTo = index - 1;
-    state.splice(indexTo, 0, state.splice(index, 1)[0]);
+    move(state, index, true);
   },
   [MOVE_DOWN](state, index) {
-    const indexTo = index + 1;
-    state.splice(indexTo, 0, state.splice(index, 1)[0]);
+    move(state, index, false);
   },
   [FETCH_POSTS](state, posts) {
-    posts.slice(0, 5).forEach(post => state.push(post));
+    posts.slice(0, 5).forEach(post => state.posts.push(post));
   },
 };
 
 export default {
-  state,
+  state: state,
   getters,
   actions,
   mutations,

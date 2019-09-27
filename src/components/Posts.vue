@@ -3,10 +3,10 @@
     <div class="flex flex-wrap">
       <div class="w-full sm:w-1/2 px-4">
         <h2 class="text-lg">Sortable Post List</h2>
-        <Post v-for="(post, index) in firstFivePosts" v-bind:key="post.id" :post="post" :index="index" />
+        <Post v-for="(post, index) in posts" v-bind:key="post.id" :post="post" :index="index" />
       </div>
       <div class="w-full sm:w-1/2 px-4 sm:mt-0 mt-16">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Message</button>
+        <History />
       </div>
     </div>
   </div>
@@ -15,20 +15,22 @@
 <script>
 
 import { mapGetters, mapActions } from 'vuex';
-import Post from './Post'
+import Post from './Post';
+import History from './History';
 import { FETCH_POSTS } from '../store/types';
 
 export default {
   name: "Posts",
   components: {
-    Post
+    Post,
+    History,
   },
   created() {
     this.fetchPosts();
   },
   computed: {
     ...mapGetters([
-      'firstFivePosts',
+      'posts',
     ])
   },
   methods: {
