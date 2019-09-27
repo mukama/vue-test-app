@@ -2,8 +2,8 @@
   <div class="post">
     <div>{{index}} {{ post.title }}</div>
     <div>
-      <button @click="moveUp(post)" class="up" v-if="index > 0">Up</button>
-      <button @click="moveDown(post)" class="down" v-if="index < 4">Down</button>
+      <button @click="moveUp(index)" class="up" v-if="index > 0">Up</button>
+      <button @click="moveDown(index)" class="down" v-if="index < 4">Down</button>
     </div>
     <hr>
   </div>

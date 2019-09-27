@@ -9,11 +9,11 @@ export const getters = {
 };
 
 export const actions = {
-  [MOVE_UP](context, post) {
-     context.commit(MOVE_UP, post)
+  [MOVE_UP](context, index) {
+     context.commit(MOVE_UP, index)
   },
-  [MOVE_DOWN](context, post) {
-     context.commit(MOVE_DOWN, post)
+  [MOVE_DOWN](context, index) {
+     context.commit(MOVE_DOWN, index)
   },
   [FETCH_POSTS](context) {
     axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -23,15 +23,13 @@ export const actions = {
 };
 
 export const mutations = {
-  [MOVE_UP](state, post) {
-    const indexFrom = state.indexOf(post);
-    const indexTo = indexFrom - 1;
-    state.splice(indexTo, 0, state.splice(indexFrom, 1)[0]);
+  [MOVE_UP](state, index) {
+    const indexTo = index - 1;
+    state.splice(indexTo, 0, state.splice(index, 1)[0]);
   },
-  [MOVE_DOWN](state, post) {
-    const indexFrom = state.indexOf(post);
-    const indexTo = indexFrom + 1;
-    state.splice(indexTo, 0, state.splice(indexFrom, 1)[0]);
+  [MOVE_DOWN](state, index) {
+    const indexTo = index + 1;
+    state.splice(indexTo, 0, state.splice(index, 1)[0]);
   },
   [FETCH_POSTS](state, posts) {
     posts.forEach(post => state.push(post));
