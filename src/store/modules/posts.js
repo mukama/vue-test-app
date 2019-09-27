@@ -5,7 +5,7 @@ import { MOVE_UP, MOVE_DOWN, FETCH_POSTS } from '../types';
 const state = [];
 
 export const getters = {
-  firstFivePosts: state => state.slice(0, 5),
+  posts: state => state,
 };
 
 export const actions = {
@@ -32,7 +32,7 @@ export const mutations = {
     state.splice(indexTo, 0, state.splice(index, 1)[0]);
   },
   [FETCH_POSTS](state, posts) {
-    posts.forEach(post => state.push(post));
+    posts.slice(0, 5).forEach(post => state.push(post));
   },
 };
 
