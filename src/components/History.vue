@@ -8,6 +8,7 @@
           <button class="hover:bg-green-400 text-blue-900 font-medium text-xs ml-auto py-1 px-2 rounded" @click="undo(index)">Time travel</button>
         </div>
       </div>
+      <div class="text-center italic" v-if="history.length === 0">No actions found</div>
     </div>
   </div>
 </template>
