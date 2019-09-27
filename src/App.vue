@@ -1,27 +1,40 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Posts msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapState } from 'vuex';
+import store from './store';
+import posts from './store/modules/posts';
+import Posts from './components/Posts.vue'
+
+if (!store.state.posts) store.registerModule('posts', posts);
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Posts
+  },
+  computed: {
+    ...mapState([
+      'posts'
+    ])
   }
 }
 </script>
 
 <style>
 #app {
+  background-image: url("./assets/bg.svg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 20px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  max-width: 960px;
+  margin: 60px auto 0;
 }
 </style>
