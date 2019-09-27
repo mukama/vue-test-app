@@ -1,4 +1,6 @@
 export default {
   posts: [],
-  history: []
+  history: [],
+  indexDown: null,
+  indexUp: null,
 }

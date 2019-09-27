@@ -5,6 +5,8 @@ import state from '../state';
 
 export const getters = {
   posts: state => state.posts,
+  indexUp: state => state.indexUp,
+  indexDown: state => state.indexDown,
 };
 
 export const actions = {
@@ -26,10 +28,12 @@ const move = (state, index, movingUp) => {
   const postId = state.posts[index].id;
   state.history.unshift({
     posts: [...state.posts],
-    indexFrom: index,
+    indexDown: index,
     postId,
     indexTo,
   });
+  state.indexDown = movingUp ? index : indexTo;
+  state.indexUp = movingUp ? indexTo : index;
   state.posts.splice(indexTo, 0, state.posts.splice(index, 1)[0]);
 }
 
