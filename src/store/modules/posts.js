@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from 'axios';
 import { MOVE_UP, MOVE_DOWN, FETCH_POSTS } from '../types';
 import state from '../state';
@@ -19,7 +18,7 @@ export const actions = {
   [FETCH_POSTS](context) {
     axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(response => context.commit(FETCH_POSTS, response.data))
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   },
 };
 

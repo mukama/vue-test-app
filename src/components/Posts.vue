@@ -1,6 +1,6 @@
 <template>
   <div class="posts">
-    <h2 class="text-lg">Sortable Post List</h2>
+    <h2 class="text-lg text-white font-bold mb-4">Sortable Post List</h2>
     <Post v-for="(post, index) in posts" v-bind:key="post.id" :post="post" :index="index" :slideInUp="index === indexUp"  :slideInDown="index === indexDown" />
   </div>
 </template>
@@ -34,10 +34,3 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h2 {
-  margin: 0 0 30px;
-  color: #FFF;
-}
-</style>
