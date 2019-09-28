@@ -1,7 +1,7 @@
 <template>
   <div class="posts">
     <h2 class="text-lg text-white font-bold mb-4">Sortable Post List</h2>
-    <Post v-for="(post, index) in posts" v-bind:key="post.id" :post="post" :index="index" :slideInUp="index === indexUp"  :slideInDown="index === indexDown" />
+    <Post v-for="(post, index) in posts" v-bind:key="post.id" :post="post" :index="index" :slideInUp="index === indexToMoveUp"  :slideInDown="index === indexToMoveDown" />
   </div>
 </template>
 
@@ -22,8 +22,8 @@ export default {
   computed: {
     ...mapGetters([
       'posts',
-      'indexUp',
-      'indexDown',
+      'indexToMoveUp',
+      'indexToMoveDown',
     ])
   },
   methods: {
